@@ -24,7 +24,7 @@ CRITICAL_CODE = 2
 UNKNOWN_CODE = 3
 
 __version__ = '2.2.0'
-__version_date__ = '2024-05-14'
+__version_date__ = '2024-07-21'
 
 class NagiosHelper:
     """
