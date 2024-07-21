@@ -442,6 +442,8 @@ def parseArgs(args):
     parser.add_argument('--key', dest='key',
                         help='SSL client key ( if not bundled into the cert )')
     parser.add_argument('-P', '--port', dest='port', help='TCP port')
+    parser.add_argument('--file', action='store_true',
+                        help='use path to local file only')
     parser.add_argument('-p', '--path', dest='path', help='Path')
     parser.add_argument('-t', '--timeout', type=int,
                         help='Connection timeout (seconds)')
@@ -627,6 +629,8 @@ def main(cliargs):
         url = "http://%s" % args.host
     if args.port:
         url += ":%s" % args.port
+    if args.file:
+        url = "file:/"
     if args.path:
         url += "/%s" % args.path
 

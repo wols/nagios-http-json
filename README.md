@@ -2,7 +2,7 @@
 
 # Nagios Json Plugin
 
-This is a generic plugin for Nagios which checks json values from a given HTTP endpoint against argument specified rules and determines the status and performance data for that service.
+This is a generic plugin for Nagios which checks json values from a given HTTP endpoint or local file against argument specified rules and determines the status and performance data for that service.
 
 ## Links
 
@@ -18,7 +18,7 @@ Executing `./check_http_json.py -h` will yield the following details:
 
 ```
 usage: check_http_json.py [-h] [-d] [-s] -H HOST [-k] [-V] [--cacert CACERT]
-                          [--cert CERT] [--key KEY] [-P PORT] [-p PATH]
+                          [--cert CERT] [--key KEY] [-P PORT] [--file] [-p PATH]
                           [-t TIMEOUT] [-B AUTH] [-D DATA] [-A HEADERS]
                           [-f FIELD_SEPARATOR] [-F VALUE_SEPARATOR]
                           [-w [KEY_THRESHOLD_WARNING [KEY_THRESHOLD_WARNING ...]]]
@@ -54,6 +54,7 @@ options:
   --cert CERT           SSL client certificate
   --key KEY             SSL client key ( if not bundled into the cert )
   -P PORT, --port PORT  TCP port
+  --file                Use path to local file query
   -p PATH, --path PATH  Path
   -t TIMEOUT, --timeout TIMEOUT
                         Connection timeout (seconds)
@@ -191,6 +192,10 @@ More info about Nagios Range format and Units of Measure can be found at [https:
 #### Using Headers
 
 * `./check_http_json.py -H <host>:<port> -p <path> -A '{"content-type": "application/json"}' -w "metric,RANGE"`
+
+#### Local file check
+
+* `./check_http_json.py -H localhost --file -p <path> -w "metric,RANGE"`
 
 ## Nagios Installation
 
